@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import { View, Text, StyleSheet, TextInput, Button  } from 'react-native';
 import {Context} from '../context/BlogContext';
 
-const CreateScreen = ({navigation}) => {
+const EditScreen = ({navigation}) => {
 
   const {addBlogPost} = useContext(Context);
 
@@ -34,4 +34,4 @@ label :{
 }
 });
 
-export default CreateScreen;
+export default EditScreen;
