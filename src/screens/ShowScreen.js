@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { View, Text, StyleSheet  } from 'react-native';
+import { View, Text, StyleSheet , TouchableOpacity } from 'react-native';
 import {Context} from '../context/BlogContext';
 import { Feather } from '@expo/vector-icons';
 
@@ -8,6 +8,7 @@ const ShowScreen = ({navigation}) => {
   const {state} = useContext(Context);
   const blogPost = state.find((blogPost)=> blogPost.id===navigation.getParam('id'));
   console.log(blogPost.id);
+
   return (<View>
     <Text>{blogPost.title}</Text>
     <Text>{blogPost.content}</Text>
@@ -17,7 +18,7 @@ const ShowScreen = ({navigation}) => {
 ShowScreen.navigationOptions = ({navigation}) => {
   return {
     headerRight : <TouchableOpacity>
-    <Feather name="plus" size={30} onPress={()=>navigation.navigate('Edit')}/>
+    <Feather name="edit" size={30} onPress={()=>navigation.navigate('Edit', {id: navigation.getParam('id') })}/>
     </TouchableOpacity>
   };
 };
