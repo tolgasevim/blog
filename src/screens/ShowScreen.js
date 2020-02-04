@@ -3,6 +3,7 @@ import { View, Text, StyleSheet , TouchableOpacity } from 'react-native';
 import {Context} from '../context/BlogContext';
 import { Feather } from '@expo/vector-icons';
 
+
 const ShowScreen = ({navigation}) => {
 
   const {state} = useContext(Context);
@@ -11,7 +12,7 @@ const ShowScreen = ({navigation}) => {
 
   return (<View>
     <Text>{blogPost.title}</Text>
-    <Text>{blogPost.content}</Text>
+    <Text>{blogPost.question}</Text>
   </View>);
 };
 

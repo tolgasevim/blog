@@ -4,15 +4,18 @@ import {View, Text, StyleSheet, TextInput, Button   } from 'react-native';
 
 const BlogPostForm = ({onSubmit, initialValues}) => {
   const [title,setTitle] = useState(initialValues.title);
-  const [content,setContent] = useState(initialValues.content);
+  const [question,setQuestion] = useState(initialValues.question);
+  const [optiona,setOptiona] = useState(initialValues.optiona);
 
 return(
   <View>
     <Text style={styles.label}>Enter Title:</Text>
     <TextInput style={styles.input} value={title} onChangeText={(text)=> setTitle(text)}/>
-    <Text style={styles.label}>Enter Content:</Text>
-    <TextInput style={styles.input} value={content} onChangeText={(text)=> setContent(text)}/>
-    <Button title="Save Blog Post" onPress={()=> { onSubmit(title,content)  }}/>
+    <Text style={styles.label}>Enter Question:</Text>
+    <TextInput style={styles.input} value={question} onChangeText={(text)=> setQuestion(text)}/>
+    <Text style={styles.label}>Enter Option A:</Text>
+    <TextInput style={styles.input} value={optiona} onChangeText={(text)=> setOptiona(text)}/>
+    <Button title="Save Blog Post" onPress={()=> { onSubmit(title,question)  }}/>
   </View>
 );
 
@@ -21,7 +24,8 @@ return(
 BlogPostForm.defaultProps ={
   initialValues: {
     title:'',
-    content:''
+    question:'',
+    optiona:''
   }
 };
 
