@@ -34,16 +34,16 @@ const  getBlogPosts = dispatch => {
 };
 
 const addBlogPost = dispatch => {
-  return async (title, content, callback) => {
-    const response = await jsonServer.post('/blogposts/', {title, content});
+  return async (title, question, optiona, optionb, optionc, optiond, callback) => {
+    const response = await jsonServer.post('/blogposts/', {title, question, optiona, optionb, optionc, optiond});
     if (callback) callback();
   };
 };
 const editBlogPost = dispatch => {
-  return async (id, title, content, callback) => {
-    const response = await jsonServer.put( `/blogposts/${id}`, {title,content});
-    
-    dispatch ({ type : 'editBlogPost', payload: {id, title, content} });
+  return async (id, title, question, optiona, optionb, optionc, optiond, callback) => {
+    const response = await jsonServer.put( `/blogposts/${id}`, {title, question, optiona, optionb, optionc, optiond});
+
+    dispatch ({ type : 'editBlogPost', payload: {id, title, question, optiona, optionb, optionc, optiond} });
     callback();
   };
 };

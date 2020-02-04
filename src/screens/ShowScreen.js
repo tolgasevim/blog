@@ -13,6 +13,10 @@ const ShowScreen = ({navigation}) => {
   return (<View>
     <Text>{blogPost.title}</Text>
     <Text>{blogPost.question}</Text>
+    <Text>A) {blogPost.optiona}</Text>
+    <Text>B) {blogPost.optionb}</Text>
+    <Text>C) {blogPost.optionc}</Text>
+    <Text>D) {blogPost.optiond}</Text>
   </View>);
 };
 
