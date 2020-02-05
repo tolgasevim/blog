@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Button , TouchableOpacity } from 'react-native';
 import { Context } from '../context/BlogContext';
-import { Feather } from '@expo/vector-icons';
 
 const IndexScreen = ({navigation}) => {
   const {state , deleteBlogPost, getBlogPosts } = useContext(Context);
@@ -17,30 +16,15 @@ const IndexScreen = ({navigation}) => {
    }, [] );
 
   return (<View>
-    <FlatList
-      data = {state}
-      keyExtractor={(blogPost) => blogPost.id.toString()}
-      renderItem={({ item }) => {
-        return        <TouchableOpacity onPress={()=> navigation.navigate('Show', {id:item.id})}>
-          <View style={styles.row}>
-            <Text style={styles.title}> {item.title} - {item.id}</Text>
-            <TouchableOpacity onPress={()=> deleteBlogPost(item.id)}>
-              <Feather name="trash" style={styles.icon}/>
-            </TouchableOpacity>
-          </View>
-        </TouchableOpacity>
-      }}
-    />
+     <TouchableOpacity onPress={()=> navigation.navigate('QuestionList')}>
+     <Text style={styles.title}> Question List</Text>
+     </TouchableOpacity>
+     <TouchableOpacity onPress={()=> navigation.navigate('Quiz')}>
+     <Text style={styles.title}> Quiz</Text>
+     </TouchableOpacity>
   </View>);
 };
 
-IndexScreen.navigationOptions = ({navigation}) => {
-  return {
-    headerRight : <TouchableOpacity>
-    <Feather name="plus" size={30} onPress={()=>navigation.navigate('Create')}/>
-    </TouchableOpacity>
-  };
-};
 
 const styles = StyleSheet.create({
   row: {

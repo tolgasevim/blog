@@ -10,7 +10,7 @@ const CreateScreen = ({navigation}) => {
 
   return (
     <BlogPostForm onSubmit={
-    (title, question, optiona, optionb, optionc, optiond )=> { addBlogPost( title, question, optiona , optionb, optionc, optiond , ()=> navigation.navigate('Index'));
+    (title, question, optiona, optionb, optionc, optiond )=> { addBlogPost( title, question, optiona , optionb, optionc, optiond , ()=> navigation.navigate('QuestionList'));
   }} />
   );
 
