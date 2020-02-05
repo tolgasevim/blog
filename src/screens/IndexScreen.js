@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Button , TouchableOpacity } from 'react-native';
-import { Context } from '../context/BlogContext';
+import { Context } from '../context/QuestionContext';
 
 const IndexScreen = ({navigation}) => {
   const {state , deleteBlogPost, getBlogPosts } = useContext(Context);
@@ -15,9 +15,14 @@ const IndexScreen = ({navigation}) => {
     }
    }, [] );
 
+
+
   return (<View>
      <TouchableOpacity onPress={()=> navigation.navigate('QuestionList')}>
      <Text style={styles.title}> Question List</Text>
+     </TouchableOpacity>
+     <TouchableOpacity onPress={()=> navigation.navigate('Quiz')}>
+     <Text style={styles.title}> Quiz</Text>
      </TouchableOpacity>
      <TouchableOpacity onPress={()=> navigation.navigate('Quiz')}>
      <Text style={styles.title}> Quiz</Text>

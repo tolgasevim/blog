@@ -1,6 +1,6 @@
 import React, {useContext, useState, useReducer} from 'react';
 import { View, Text, StyleSheet , TouchableOpacity } from 'react-native';
-import {Context} from '../context/BlogContext';
+import {Context} from '../context/QuestionContext';
 import { Feather } from '@expo/vector-icons';
 
 
@@ -35,9 +35,15 @@ const QuizScreen = ({navigation}) => {
     answerTag = <Text>Wrong answer, correct answer was {blogPost.correctAnswer}</Text>;
   }
   if(answered && noOfAnswered < 10) {
-        nextButton = <TouchableOpacity onPress={()=> {setAnswered(false); setAnswer(""); setId(id+1); } }><Text>Next Question</Text></TouchableOpacity>;
-  } else if ( answered && noOfAnswered < 10 ) {
-        nextButton = <TouchableOpacity onPress={()=> {setAnswered(false); setAnswer(""); setId(id+1); } }><Text>Finish exam</Text></TouchableOpacity>;
+        nextButton =
+        <View style={styles.button} >
+        <TouchableOpacity onPress={()=> {setAnswered(false); setAnswer(""); setId(id+1); } }><Text>Next Question</Text></TouchableOpacity>
+        </View>;
+  } else if ( answered && noOfAnswered === 10 ) {
+        nextButton =
+        <View style={styles.button} >
+        <TouchableOpacity onPress={()=> navigation.navigate('QuizResult', {noOfCorrectAnswered:noOfCorrectAnswered})}><Text>Finish exam</Text></TouchableOpacity>
+        </View>;
   }
   answerClick = (answer, blogPost) => {
     setAnswered(true);
@@ -51,7 +57,6 @@ const QuizScreen = ({navigation}) => {
     console.log(answer);
     console.log(answered);
     console.log(noOfCorrectAnswered);
-
   }
 
   return (<View>
@@ -67,8 +72,14 @@ const QuizScreen = ({navigation}) => {
     <TouchableOpacity style={styles.answer} disabled={answered} onPress={()=> {answerClick("c", blogPost); } }><Text>C) {blogPost.optionc}</Text></TouchableOpacity>
     <TouchableOpacity style={styles.answer} disabled={answered} onPress={()=> {answerClick("d", blogPost); } }><Text>D) {blogPost.optiond}</Text></TouchableOpacity>
     </View>
-    {answerTag}
-    {nextButton}
+    <View style={styles.answerContainer} >
+      {answerTag}
+    </View>
+
+      {nextButton}
+
+
+
     <Text>Correct answers: {noOfCorrectAnswered} /Total answered: {noOfAnswered}</Text>
   </View>);
 };
@@ -102,6 +113,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#eee'
 
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 30,
+    justifyContent: 'center',
+    backgroundColor: '#eee'
   },
   answerContainer: {
     alignItems: 'stretch',

@@ -6,9 +6,10 @@ import CreateScreen from './src/screens/CreateScreen';
 import EditScreen from './src/screens/EditScreen';
 import QuestionListScreen from './src/screens/QuestionListScreen';
 import QuizScreen from './src/screens/QuizScreen';
+import QuizResultScreen from './src/screens/QuizResultScreen';
 import React from 'react'; // if it is a export default then
 // we can import without curly braces else import only with curly braces as the example below
-import { Provider } from './src/context/BlogContext';
+import { Provider } from './src/context/QuestionContext';
 
 
 const navigator = createStackNavigator ({
@@ -17,7 +18,8 @@ const navigator = createStackNavigator ({
   Show : ShowScreen,
   Create : CreateScreen,
   Edit : EditScreen,
-  Quiz : QuizScreen
+  Quiz : QuizScreen,
+  QuizResult : QuizResultScreen
 
 },{
   initialRouteName : 'Index',

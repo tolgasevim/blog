@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, TextInput, Button   } from 'react-native';
 
 
-const BlogPostForm = ({onSubmit, initialValues}) => {
+const QuestionForm = ({onSubmit, initialValues}) => {
   const [title,setTitle] = useState(initialValues.title);
   const [question,setQuestion] = useState(initialValues.question);
   const [optiona,setOptiona] = useState(initialValues.optiona);
@@ -30,7 +30,7 @@ return(
 
 };
 
-BlogPostForm.defaultProps ={
+QuestionForm.defaultProps ={
   initialValues: {
     title:'',
     question:'',
@@ -54,4 +54,4 @@ label :{
 });
 
 
-export default BlogPostForm;
+export default QuestionForm;
