@@ -1,20 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Button , TouchableOpacity } from 'react-native';
-import { Context } from '../context/QuestionContext';
 
 const IndexScreen = ({navigation}) => {
-  const {state , deleteBlogPost, getBlogPosts } = useContext(Context);
-
-  useEffect(()=>{
-    getBlogPosts();
-    const listener =  navigation.addListener('didFocus', () => {
-      getBlogPosts();
-    });
-    return () => {
-      listener.remove();
-    }
-   }, [] );
-
 
 
   return (<View>
@@ -24,8 +11,10 @@ const IndexScreen = ({navigation}) => {
      <TouchableOpacity onPress={()=> navigation.navigate('Quiz')}>
      <Text style={styles.title}> Quiz</Text>
      </TouchableOpacity>
-     <TouchableOpacity onPress={()=> navigation.navigate('Quiz')}>
-     <Text style={styles.title}> Quiz</Text>
+
+     <Text> Which user do you want to select? </Text>
+     <TouchableOpacity onPress={()=> navigation.navigate('User')}>
+     <Text style={styles.title}> User</Text>
      </TouchableOpacity>
   </View>);
 };

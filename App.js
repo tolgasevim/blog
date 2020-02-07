@@ -7,9 +7,12 @@ import EditScreen from './src/screens/EditScreen';
 import QuestionListScreen from './src/screens/QuestionListScreen';
 import QuizScreen from './src/screens/QuizScreen';
 import QuizResultScreen from './src/screens/QuizResultScreen';
+import UserScreen from './src/screens/UserScreen';
+import LoginScreen from './src/screens/LoginScreen';
 import React from 'react'; // if it is a export default then
 // we can import without curly braces else import only with curly braces as the example below
 import { Provider } from './src/context/QuestionContext';
+import { Provider as UserProvider} from './src/context/UserContext';
 
 
 const navigator = createStackNavigator ({
@@ -19,12 +22,14 @@ const navigator = createStackNavigator ({
   Create : CreateScreen,
   Edit : EditScreen,
   Quiz : QuizScreen,
-  QuizResult : QuizResultScreen
+  QuizResult : QuizResultScreen,
+  User : UserScreen,
+  Login : LoginScreen
 
 },{
-  initialRouteName : 'Index',
+  initialRouteName : 'Login',
   defaultNavigationOptions: {
-    title : 'Blogs'
+    title : 'FunLearn'
   }
 
 });
@@ -33,6 +38,6 @@ const navigator = createStackNavigator ({
 
 const App = createAppContainer(navigator);
 export default () => {
-  return (<Provider><App/>
+  return (<Provider><UserProvider><App/></UserProvider>
   </Provider>);
 };
